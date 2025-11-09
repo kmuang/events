@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events</title> 
+  <link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-6 shadow-md">
+    <div class="max-w-6xl mx-auto text-center">
+      <h1 class="text-4xl font-bold mb-2">🎶 Tulsa Local Music Events</h1>
+      <p class="text-lg opacity-90">Discover live music happening near you</p>
+    </div>
+  </header>
+
+  <!-- Events Container -->
+  <main class="max-w-6xl mx-auto p-6">
+    <div id="eventGrid" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <!-- Dynamic events will be injected here -->
+    </div>
+  </main>
+
+  <footer class="bg-gray-900 text-gray-300 text-center py-4 mt-8">
+    <p>&copy; 2025 Tulsa Music Live. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Sample "local" event data (you can later replace this with real API data)
+    const events = [
+      {
+        title: "Tulsa Jazz Night",
+        date: "November 12, 2025",
+        time: "8:00 PM",
+        venue: "The Vanguard, Downtown Tulsa",
+        image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=60",
+        link: "#"
+      },
+      {
+        title: "Indie Rock Fest",
+        date: "November 15, 2025",
+        time: "7:00 PM",
+        venue: "Cain’s Ballroom",
+        image: "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=800&q=60",
+        link: "#"
+      },
+      {
+        title: "Soul Sunday Brunch",
+        date: "November 17, 2025",
+        time: "11:00 AM",
+        venue: "The Hunt Club",
+        image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=60",
+        link: "#"
+      },
+      {
+        title: "Tulsa Blues Revival",
+        date: "November 20, 2025",
+        time: "9:00 PM",
+        venue: "Mercury Lounge",
+        image: "https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?auto=format&fit=crop&w=800&q=60",
+        link: "#"
+      },
+      {
+        title: "Country Jam Night",
+        date: "November 22, 2025",
+        time: "6:30 PM",
+        venue: "River Spirit Casino Resort",
+        image: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=800&q=60",
+        link: "#"
+      },
+      {
+        title: "R&B on the Rooftop",
+        date: "November 25, 2025",
+        time: "8:30 PM",
+        venue: "Fassler Hall Rooftop",
+        image: "https://images.unsplash.com/photo-1519677100203-a0e668c92439?auto=format&fit=crop&w=800&q=60",
+        link: "#"
+      }
+    ];
+
+    // Function to render events
+    function displayEvents() {
+      const container = document.getElementById("eventGrid");
+      container.innerHTML = "";
+
+      events.forEach(event => {
+        const card = document.createElement("div");
+        card.className = "bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition transform hover:-translate-y-1";
+
+        card.innerHTML = `
+          <img src="${event.image}" alt="${event.title}" class="h-48 w-full object-cover">
+          <div class="p-5">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">${event.title}</h2>
+            <p class="text-gray-600 text-sm mb-1"><strong>Date:</strong> ${event.date}</p>
+            <p class="text-gray-600 text-sm mb-1"><strong>Time:</strong> ${event.time}</p>
+            <p class="text-gray-600 text-sm mb-3"><strong>Venue:</strong> ${event.venue}</p>
+            <a href="${event.link}" target="_blank" class="inline-block bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition">View Details</a>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    // Load events on page load
+    displayEvents();
+  </script>
+</body>
+</html>
